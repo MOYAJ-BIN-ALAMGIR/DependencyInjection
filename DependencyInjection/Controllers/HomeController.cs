@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Diagnostics;
 using DependencyInjection.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +19,10 @@ namespace DependencyInjection.Controllers
         }
         public IActionResult Index()
         {
-            ViewBag.Total = productSum.Total;
+            //ViewBag.Total = productSum.Total;
+            ViewBag.HomeControllerGuid = repository.ToString();
+            ViewBag.TotalGuid = productSum.Repository.ToString();
+
             return View(repository.Products);
         }
     }
