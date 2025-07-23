@@ -15,7 +15,7 @@ namespace DependencyInjection.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(new Repository().Products);
         }
 
         public IActionResult Privacy()
