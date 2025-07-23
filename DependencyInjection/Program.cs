@@ -1,5 +1,7 @@
+using DependencyInjection.Models;
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddTransient<IRepository, Repository>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

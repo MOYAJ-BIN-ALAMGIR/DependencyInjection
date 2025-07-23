@@ -6,27 +6,14 @@ namespace DependencyInjection.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private IRepository repository;
+        public HomeController(IRepository repo)
         {
-            _logger = logger;
+            repository = repo;
         }
-
         public IActionResult Index()
         {
-            return View(new Repository().Products);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(repository.Products);
         }
     }
 }
