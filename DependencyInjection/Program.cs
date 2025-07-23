@@ -1,7 +1,7 @@
 using DependencyInjection.Models;
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddTransient<IRepository, Repository>();
+builder.Services.AddScoped<IRepository, Repository>();
 builder.Services.AddTransient<ProductSum>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
