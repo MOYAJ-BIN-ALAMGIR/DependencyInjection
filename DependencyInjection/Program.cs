@@ -1,10 +1,13 @@
 using DependencyInjection.Models;
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IRepository, Repository>();
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IRepository, Repository>();
+builder.Services.AddTransient<IStorage , Storage>();
 builder.Services.AddTransient<ProductSum>();
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
