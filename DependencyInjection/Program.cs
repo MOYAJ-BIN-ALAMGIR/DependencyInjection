@@ -1,8 +1,16 @@
 using DependencyInjection.Models;
+using System.Runtime.InteropServices;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    config.AddJsonFile("mysettings.json",
+        optional: false,//file is not optimal)
+        reloadOnChange: true);
+});
+builder.Services.Configure<MyJson>(builder.Configuration);
 builder.Services.AddTransient<IRepository, Repository>();
 builder.Services.AddTransient<IStorage , Storage>();
 builder.Services.AddTransient<ProductSum>();
