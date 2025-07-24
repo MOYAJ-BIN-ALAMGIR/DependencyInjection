@@ -11,13 +11,13 @@ namespace DependencyInjection.Controllers
     public class HomeController : Controller
     {
         private IRepository repository;
-        private ProductSum productSum;
-        public HomeController(IRepository repo,ProductSum psum)
+        //private ProductSum productSum;
+        public HomeController(IRepository repo)//,ProductSum psum)
         {
             repository = repo;
-            productSum = psum;
+            //productSum = psum;
         }
-        public IActionResult Index()
+        public IActionResult Index([FromServices] ProductSum productSum)
         {
             //ViewBag.Total = productSum.Total;
             ViewBag.HomeControllerGuid = repository.ToString();

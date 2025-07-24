@@ -8,6 +8,21 @@ builder.Services.AddTransient<IStorage , Storage>();
 builder.Services.AddTransient<ProductSum>();
 // Add services to the container.
 
+IWebHostEnvironment env = builder.Environment;
+
+builder.Services.AddTransient<IRepository>(provider =>
+{
+    if (env.IsDevelopment())
+    {
+        var x = provider.GetService<Repository>();
+        return x;
+    }
+    else
+    {
+        return new ProductionRepository();
+    }
+});
+builder.Services.AddTransient<Repository>();
 
 var app = builder.Build();
 
