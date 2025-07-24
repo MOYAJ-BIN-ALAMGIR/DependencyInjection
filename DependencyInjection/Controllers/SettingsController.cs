@@ -11,6 +11,11 @@ namespace DependencyInjection.Controllers
         {
             _settings = settingsOptions.Value;
         }
+
+        public IActionResult Show()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             ViewData["Title"] = _settings.Title;
