@@ -11,7 +11,10 @@ namespace DependencyInjection.Controllers
         {
             _settings = settingsOptions.Value;
         }
-
+        public IActionResult Detail()
+        {
+            return View();
+        }
         public IActionResult Show()
         {
             return View();

@@ -1,7 +1,10 @@
 ﻿@using Microsoft.Extensions.Options;
 @using DependencyInjection.Models;
 @inject IOptions<MyJson> settingsOptions
-
+@inject IConfiguration configuration
+<div>
+	@configuration["Logging:LogLevel:Defult"]
+</div>
 <table class="table table-bordered table-sm table-striped">
 	<tr>
 		<td>Title</td>
